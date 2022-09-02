@@ -1,0 +1,15 @@
+@startuml
+skinparam actorStyle awesome
+:Financeiro:
+:Prestadora:
+:Usuario: -> (Criar ordem de serviço)
+(Criar ordem de serviço) -> (Envia ordem Serviço)
+(Envia ordem Serviço) -> :Prestadora:
+  :Prestadora: -> (Continuidade Ordem de serviço)
+  (Continuidade Ordem de serviço) -> (Finaliza confecção)
+  (Finaliza confecção) -> (Usuário retira peças)
+  (Usuário retira peças) -> (Da baixa na ordem de serviço)
+(Da baixa na ordem de serviço) -> :Financeiro:
+ :Financeiro: -> (Realiza pagamento)
+
+@enduml
