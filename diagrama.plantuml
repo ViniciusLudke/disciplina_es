@@ -11,5 +11,6 @@ skinparam actorStyle awesome
   (Usuário retira peças) -> (Da baixa na ordem de serviço)
 (Da baixa na ordem de serviço) -> :Financeiro:
  :Financeiro: -> (Realiza pagamento)
+ 
 
 @enduml
