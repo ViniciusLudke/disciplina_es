@@ -1,0 +1,52 @@
+' @startuml
+' 	left to right direction
+' 	skinparam packageStyle rect
+' 	actor Usuário
+' 	actor Prestadora
+'   actor Financeiro
+' 	rectangle OPE {
+
+'     Prestadora -- (Continuidade ordem serviço)
+
+' 	  Usuário -- (Cria ordem de serviço)
+'     Usuário -- (Envia ordem de serviço)
+'     Usuário -- (Usuário retira peças)
+
+'   (Cria ordem de serviço) .> (Envia ordem de serviço) : include
+' 	' (Envia ordem de serviço) .> (Continuidade ordem serviço) : include
+'   (Continuidade ordem serviço) .> (Finaliza ordem de serviço) : include
+'   (Finaliza ordem de serviço) .> (Usuário retira peças) : include
+
+'   ' (checkout) .> (payment) : include
+' 	  ' (help) .> (checkout) : extends
+' 	  ' (checkout) -- Prestadora
+' 	}
+' 	@enduml
+
+@startuml
+
+left to right direction
+
+actor Usuario
+actor Prestador
+actor Financeiro
+
+rectangle :OPE: {
+	Usuario -- (Cria ordem de serviço)
+	Usuario -- (Envia ordem de serviço)
+	Prestador -- (Continuidade ordem serviço)
+	Prestador -- (Finaliza ordem de serviço)
+	Usuario -- (Usuário retira peças)
+	Usuario -- (Realiza baixa na OPE)
+	Financeiro -- (Realiza pagamento)
+
+' () .> (Continuidade ordem serviço) : include
+
+
+' includes
+(Envia ordem de serviço) .> (Continuidade ordem serviço) : include
+(Finaliza ordem de serviço) .> (Usuário retira peças) : include
+(Realiza baixa na OPE) .> (Realiza pagamento) : include
+}
+
+@enduml
